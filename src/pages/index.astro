@@ -44,7 +44,7 @@ const services = [
 
 <Layout>
   <main
-    class="mx-auto flex max-w-screen-sm flex-col items-center space-y-24 px-2 pb-8 text-gray-700">
+    class="mx-auto flex max-w-screen-sm flex-col items-center space-y-24 px-3 pb-8 text-gray-700">
     <section class="flex flex-col items-center space-y-8">
       <Image
         src={photo}
@@ -70,7 +70,7 @@ const services = [
         {
           services.map(({ icon, text }, index) => (
             <>
-              {index !== 0 && <hr />}
+              {index !== 0 && <hr class="border-stone-300" />}
               <ServiceItem icon={icon} text={text} />
             </>
           ))

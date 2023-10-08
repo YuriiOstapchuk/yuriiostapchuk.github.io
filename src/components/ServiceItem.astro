@@ -1,0 +1,18 @@
+---
+export interface Props {
+  text: string;
+  icon: (props: Record<string, unknown>) => any;
+}
+
+const { text, icon: Icon } = Astro.props;
+---
+
+<div class="flex items-center space-x-4 text-lg">
+  <div class="flex h-9 w-9 items-center">
+    <Icon />
+  </div>
+
+  <div>
+    {text}
+  </div>
+</div>

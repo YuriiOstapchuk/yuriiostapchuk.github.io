@@ -1,0 +1,87 @@
+---
+import { Image } from "astro:assets";
+import Layout from "layouts/Layout.astro";
+
+import photo from "../images/photo.jpeg";
+import ContactButton from "components/ContactButton.astro";
+
+import MailIcon from "components/icons/MailIcon.astro";
+import TelegramIcon from "components/icons/TelegramIcon.astro";
+import LinkedinIcon from "components/icons/LinkedinIcon.astro";
+import InstagramIcon from "components/icons/InstagramIcon.astro";
+import ServiceItem from "components/ServiceItem.astro";
+import StorefrontIcon from "components/icons/StorefrontIcon.astro";
+import ConversionIcon from "components/icons/ConversionIcon.astro";
+import PerformanceIcon from "components/icons/PerformanceIcon.astro";
+import MobileStorefrontIcon from "components/icons/MobileStorefrontIcon.astro";
+
+const contactButtons = [
+  {
+    href: "https://123",
+    icon: MailIcon,
+  },
+  {
+    href: "https://t.me/yurii_o1",
+    icon: TelegramIcon,
+  },
+  {
+    href: "https://www.linkedin.com/in/yurii-ostapchuk-648894b5/",
+    icon: LinkedinIcon,
+  },
+  {
+    href: "https://www.instagram.com/yurii.ostapchuk/",
+    icon: InstagramIcon,
+  },
+];
+
+const services = [
+  { text: "Storefront development", icon: StorefrontIcon },
+  { text: "Storefront conversion improvement", icon: ConversionIcon },
+  { text: "Storefront performance optimization", icon: PerformanceIcon },
+  { text: "Mobile storefront development", icon: MobileStorefrontIcon },
+];
+---
+
+<Layout>
+  <main
+    class="mx-auto flex max-w-screen-sm flex-col items-center space-y-24 px-2 pb-8 text-gray-700">
+    <section class="flex flex-col items-center space-y-8">
+      <Image
+        src={photo}
+        class="mt-[12.5%] w-1/2 rounded-full border-8 border-stone-200"
+        alt="photo"
+      />
+
+      <h1 class="text-center text-3xl font-semibold">Yurii Ostapchuk</h1>
+
+      <div class="flex flex-wrap justify-center gap-4">
+        {
+          contactButtons.map(({ href, icon }) => (
+            <ContactButton href={href} icon={icon} />
+          ))
+        }
+      </div>
+    </section>
+
+    <section class="flex w-full flex-col items-center space-y-8">
+      <h2 class="text-center text-2xl font-medium">I can help you with</h2>
+
+      <div class="w-full max-w-sm space-y-4">
+        {
+          services.map(({ icon, text }, index) => (
+            <>
+              {index !== 0 && <hr />}
+              <ServiceItem icon={icon} text={text} />
+            </>
+          ))
+        }
+      </div>
+    </section>
+  </main>
+
+  <footer class="w-full py-16">
+    <p class="text-center text-xs font-light text-gray-600">
+      © 2023, Yurii Ostapchuk. Content Copyrighted.
+    </p>
+  </footer>
+</Layout>

@@ -1,0 +1,18 @@
+---
+export interface Props {
+  icon: (props: Record<string, unknown>) => any;
+  href: string;
+}
+
+const { href, icon: Icon } = Astro.props;
+---
+
+<a
+  href={href}
+  target="_blank"
+  rel="noopener noreferrer"
+  class="rounded-full border-2 border-stone-200 p-2">
+  <div class="flex h-10 w-10 items-center">
+    <Icon />
+  </div>
+</a>

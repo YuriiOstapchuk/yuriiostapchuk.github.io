@@ -1,0 +1,36 @@
+---
+import { SEO } from "astro-seo";
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
+
+const title = "Yurii Ostapchuk";
+
+const description = "Yurii Ostapchuk about page";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <meta name="generator" content={Astro.generator} />
+
+    <SEO title={title} description={description} canonical={canonicalURL} />
+  </head>
+  <body>
+    <slot />
+    <style is:global>
+      html {
+        font-family: system-ui, sans-serif;
+        scroll-behavior: smooth;
+      }
+
+      /* Improve Page speed */
+      /* https://css-tricks.com/almanac/properties/c/content-visibility/ */
+      img {
+        content-visibility: auto;
+      }
+    </style>
+  </body>
+</html>

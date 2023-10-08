@@ -4,5 +4,6 @@ import sitemap from "@astrojs/sitemap";
 
 export default defineConfig({
   site: "https://yurii-ostapchuk.github.io",
+  base: "/",
   integrations: [tailwind(), sitemap()],
 });

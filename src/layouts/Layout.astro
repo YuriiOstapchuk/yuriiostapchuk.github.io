@@ -1,11 +1,18 @@
 ---
 import { SEO } from "astro-seo";
+import { getImage } from "astro:assets";
+
+import photo from "../images/photo.jpeg";
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
 
 const title = "Yurii Ostapchuk";
 
-const description = "Yurii Ostapchuk about page";
+const description = "Yurii Ostapchuk contacts and about page";
+
+const metaImage = await getImage({
+  src: photo,
+});
 ---
 
 <!doctype html>
@@ -16,7 +23,18 @@ const description = "Yurii Ostapchuk about page";
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <meta name="generator" content={Astro.generator} />
 
-    <SEO title={title} description={description} canonical={canonicalURL} />
+    <SEO
+      title={title}
+      description={description}
+      canonical={canonicalURL}
+      openGraph={{
+        basic: {
+          title,
+          image: metaImage.src,
+          type: "profile",
+        },
+      }}
+    />
   </head>
   <body>
     <slot />
@@ -30,6 +48,10 @@ const description = "Yurii Ostapchuk about page";
       /* https://css-tricks.com/almanac/properties/c/content-visibility/ */
       img {
         content-visibility: auto;
+      }
+
+      svg {
+        width: 100%;
       }
     </style>
   </body>
